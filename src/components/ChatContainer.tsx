@@ -15,13 +15,11 @@ export const ChatContainer: React.FC = () => {
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto">
-      <div className="flex flex-col">
-        {messages.map((message) => (
-          <ChatMessage key={message.id} {...message} />
-        ))}
-        <div ref={messagesEndRef} />
-      </div>
+    <div className="flex-1 overflow-y-auto flex flex-col-reverse">
+      <div ref={messagesEndRef} />
+      {[...messages].reverse().map((message) => (
+        <ChatMessage key={message.id} {...message} />
+      ))}
     </div>
   );
 };
